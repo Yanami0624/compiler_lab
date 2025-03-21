@@ -3,12 +3,11 @@ use std::env::args;
 use std::fs::read_to_string;
 use std::io::Result;
 
-use sysy_compiler::my_struct::*;
-
 // 引用 lalrpop 生成的解析器
 // 因为我们刚刚创建了 sysy.lalrpop, 所以模块名是 sysy
 lalrpop_mod!(sysy);
 
+#[allow(unused)]
 fn main() -> Result<()> {
   // 解析命令行参数
   let mut args = args();
@@ -25,6 +24,6 @@ fn main() -> Result<()> {
   let ast = sysy::CompUnitParser::new().parse(&input).unwrap();
 
   // 输出解析得到的 AST
-  println!("{}", ast);
+  println!("{:#?}", ast);
   Ok(())
 }
