@@ -3,6 +3,9 @@ use std::env::args;
 use std::fs::read_to_string;
 use std::io::Result;
 
+mod my_struct;
+mod func_koopa;
+
 // 引用 lalrpop 生成的解析器
 // 因为我们刚刚创建了 sysy.lalrpop, 所以模块名是 sysy
 lalrpop_mod!(sysy);

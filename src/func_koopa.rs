@@ -1,13 +1,17 @@
-mod my_struct;
+use crate::my_struct::*;
 
-pub trait ast_Tree{
-    pub fn tree() -> String;
+trait AstTree{
+    fn tree(&self) -> String;
 }
 
-pub impl tree for CompUnit{
-    tree(func_def)
+impl AstTree for CompUnit{
+    fn tree(&self) -> String {
+        self.func_def.tree()
+    }
 }
 
-pub impl tree for FuncDef{
-
+impl AstTree for FuncDef{
+    fn tree(&self) -> String{
+        
+    }
 }
