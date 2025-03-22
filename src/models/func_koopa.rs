@@ -1,6 +1,6 @@
-use crate::my_struct::*;
+use super::my_struct::*;
 
-trait AstTree {
+pub trait AstTree {
     fn tree(&self) -> String;
 }
 

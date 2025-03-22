@@ -1,5 +1,3 @@
-use crate::func_koopa::*;
-
 #[derive(Debug)]    
   pub struct CompUnit {
     pub func_def: FuncDef,

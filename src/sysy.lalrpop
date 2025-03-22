@@ -1,5 +1,5 @@
 // lalrpop 里的约定
-use crate::my_struct::*;
+use crate::models::my_struct::*;
 
 grammar;
 
