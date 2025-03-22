@@ -3,7 +3,11 @@ use std::env::args;
 use std::fs::read_to_string;
 use std::io::Result;
 
+use std::fs::File;
+use std::os::unix::io::AsRawFd;
+
 mod models;
+#[allow(unused)]
 use models::{my_struct::*, func_koopa::*};
 
 // 引用 lalrpop 生成的解析器
@@ -22,6 +26,12 @@ fn main() -> Result<()> {
 
   // 读取输入文件
   let input = read_to_string(input)?;
+  let file = File::create(output)?;
+  let raw_fd = file.as_raw_fd();
+    unsafe {
+        libc::dup2(raw_fd, libc::STDOUT_FILENO);
+    }
+
 
   // 调用 lalrpop 生成的 parser 解析输入文件
   let ast = sysy::CompUnitParser::new().parse(&input).unwrap();

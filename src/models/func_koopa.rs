@@ -15,10 +15,11 @@ impl AstTree for FuncDef {
         let temp0 = self.func_type.tree();
         let temp1 = self.ident.tree();
         let temp2 = self.block.tree();
-        format!("fun @{}(): {} {}", temp0, temp1, temp2)
+        format!("fun @{}(): {} {}", temp1, temp0, temp2)
     }
 }
 
+#[allow(unreachable_patterns)]
 impl AstTree for FuncType {
     fn tree(&self) -> String {
         match *self {
@@ -36,12 +37,12 @@ impl AstTree for String {
 
 impl AstTree for Block {
     fn tree(&self) -> String {
-        format!("{{\n{}}}", self.stmt.tree())
+        format!("{{\n%entry:\n{}}}", self.stmt.tree())
     }
 }
 
 impl AstTree for Stmt {
     fn tree(&self) -> String {
-        format!("\tret {}", self.num)
+        format!("\tret {}\n", self.num)
     }
 }
