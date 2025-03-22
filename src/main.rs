@@ -27,6 +27,6 @@ fn main() -> Result<()> {
   let ast = sysy::CompUnitParser::new().parse(&input).unwrap();
 
   // 输出解析得到的 AST
-  println!("{:#?}", ast);
+  println!("{}", ast.tree());
   Ok(())
 }
